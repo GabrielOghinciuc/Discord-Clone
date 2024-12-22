@@ -1,0 +1,143 @@
+.people-column {
+  color: #fff;
+
+  .people-list {
+    padding: 10px;
+    background-color: #2f3136;
+    border-radius: 8px;
+    overflow-y: auto;
+    max-height: 400px;
+
+    .people-list-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 8px;
+      border-bottom: 1px solid #eee;
+
+      .user-info {
+        display: flex;
+        align-items: center;
+
+        .avatar {
+          width: 32px;
+          height: 32px;
+          border-radius: 50%;
+          margin-right: 10px;
+        }
+
+        .text {
+          margin-left: 10px;
+
+          .discord-tag {
+            font-weight: bold;
+            color: #fff;
+          }
+
+          .subtext {
+            color: #ddd;
+            font-size: 0.85rem;
+          }
+        }
+      }
+
+      .actions {
+        display: flex;
+
+        .action-button {
+          margin-left: 8px;
+          cursor: pointer;
+          width: 24px;
+          height: 24px;
+        }
+      }
+    }
+  }
+
+  hr {
+    margin: 0;
+    border-color: #555;
+  }
+  .people-list-item hr {
+    margin: 5px 0;
+    border-top: 1px solid #555;
+    width: 100%;
+  }
+  .no-users {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100px;
+    text-align: center;
+    
+    svg {
+      margin-bottom: 10px;
+      width: 48px;
+      height: 48px;
+    }
+    
+    p {
+      font-size: 16px;
+      color: #fff;
+    }
+  }
+}
+.custom-svg-btn {
+  background-color: transparent;
+  border: 1px solid #555;
+  color: #b9bbbe;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  padding: 8px;
+  background-color: #272727;
+  border-color: transparent;
+}
+.button-container {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+
+.custom-svg-btn svg {
+  fill: currentColor;
+  width: 24px;
+  height: 24px;
+}
+
+.button-container .custom-svg-btn.btn {
+  all: unset;
+  display: flex;
+  flex-direction: row;
+  gap: 10px; 
+}
+
+
+.search-bar {
+  position: relative;
+  width: 100%; 
+  margin-bottom: 10px;
+  .search-input {
+    width: 100%;
+    padding: 8px 40px 8px 8px;
+    border-radius: 4px;
+    background-color: #333333;
+    color: #fff;
+    border: 1px solid #444;
+
+    &:focus {
+      outline: none;
+      border-color: #fff;
+    }
+  }
+
+  .search-icon {
+    position: absolute;
+    right: 3px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+  }
+}

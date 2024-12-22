@@ -1,0 +1,12 @@
+@import '../../shared/scss/colors';
+
+:host {
+  position: relative;
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+}
+
+app-chat{overflow: hidden;
+  overflow-y: hidden;
+  overflow-x: hidden;}

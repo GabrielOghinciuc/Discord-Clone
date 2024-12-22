@@ -1,0 +1,52 @@
+<div *ngIf="channelTextTitle" class="container">
+  <div class="channel-title">
+    <app-icon class="medium color-grey" name="text-channel"></app-icon>
+    <span>{{ channelTextTitle }}</span>
+  </div>
+  <div class="chat" #allMessages>
+    <div class="welcome">
+      <app-icon name="text-channel" class="xxl"></app-icon>
+      <h1>Welcome to #{{ channelTextTitle }}</h1>
+      <span>This is the start of the #{{ channelTextTitle }} channel</span>
+      <div class="edit-channel" (click)="openEditChannelModal()">
+        <app-icon class="color-light-blue" name="pen"></app-icon>
+        <span>Edit channel</span>
+      </div>
+    </div>
+    <div class="messages">
+      <ng-container *ngFor="let message of messages; trackBy: trackByFn">
+        <div class="date-group" *ngIf="messages | checkDifferentDays: message">
+          <div class="line"></div>
+          <span>{{ message.sentOn | date: 'short' }}</span>
+          <div class="line"></div>
+        </div>
+        <div class="message" [class.has-stacked-messages]="messages | stackMessages: message">
+          <app-avatar
+            *ngIf="!(messages | stackMessages: message)"
+            [bgColor]="(users | whoSentTheMessage: message)?.bgColor"
+            icon="logo"
+            dimension="small"
+          ></app-avatar>
+          <div class="content">
+            <div class="name-and-data" *ngIf="!(messages | stackMessages: message)">
+              <span class="name">{{ (users | whoSentTheMessage: message)?.username }}</span>
+              <span class="data">{{ message.sentOn | date: 'short' }}</span>
+            </div>
+            <div class="stacked-message-container">
+              <span *ngIf="messages | stackMessages: message" class="stacked-message-hour">{{ message.sentOn | date: 'shortTime' }}</span>
+              <span class="message-content" [class.stacked-message]="messages | stackMessages: message">{{ message.content }}</span>
+            </div>
+          </div>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+  <div class="input-wrapper">
+    <input
+      type="text"
+      [(ngModel)]="message"
+      (keydown)="setTheValueOnEnter($event)"
+      placeholder="Trimite un mesaj pe #{{ channelTextTitle }}"
+    />
+  </div>
+</div>

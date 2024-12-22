@@ -1,0 +1,277 @@
+html, body {
+  overflow: hidden;
+}
+
+.settings-container {
+  display: flex;
+  height: 100vh;
+  flex-grow: 1;
+}
+.list {
+  width: 250px;
+  background-color: #2c2f33;
+  padding: 20px;
+  color: white;
+}
+svg {
+    margin-right: 20px;  
+    width: auto;         
+    height: auto;
+    display: inline-block;
+}
+.svg-icon {
+  float: right;
+  margin-left: 20px; 
+  width: auto;         
+  height: auto;
+}
+
+.profile-section {
+  flex-grow: 1;
+  background-color: #36393f;
+  padding: 20px;
+  color: white;
+  overflow-y: auto;
+  scrollbar-width: none;
+  display: flex;
+  flex-direction: column;}
+.my-account-section {
+  margin-bottom: 40px; 
+}
+.profile-banner {
+  height: 100px;
+  background-color: #57f287;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+.profile-container {
+  background-color: #2c2f33;
+  padding: 20px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  margin-top: -50px;
+}
+.profile-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.profile-picture {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  border: 3px solid #2c2f33;
+}
+.user-info {
+  margin-left: 20px;
+  flex-grow: 1;
+}
+.user-info h3 {
+  margin: 0;
+  font-size: 24px;
+}
+.user-id {
+  display: flex;
+  align-items: center;
+  font-size: 16px;
+  color: #b9bbbe;
+}
+.edit-profile-btn {
+  background-color: #5865f2;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+.user-details {
+  margin-top: 20px;
+  background-color: #202225;
+  padding: 15px;
+  border-radius: 5px;
+}
+.detail {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  background-color: #2c2f33;
+  border-radius: 5px;
+  margin-bottom: 15px;
+}
+.detail-info {
+  display: flex;
+  flex-direction: column;
+}
+.detail .label {
+  color: #b9bbbe;
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+.detail span {
+  color: white;
+  font-size: 16px;
+}
+button {
+  background-color: #5865f2;
+  color: white;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  text-decoration: none;
+}
+.detail button:hover {
+  background-color: #4e5bda;
+}
+
+a {
+  display: inline-block;
+  width: 100%;
+  text-align: left;
+  margin-top: -5px;
+}
+.my-account-section {
+  margin-bottom: 40px; }
+button {
+  background-color: #6567f7;
+  border-color: #6567f7;
+  margin: 10px 0px 10px;
+}
+
+button:hover {
+  background-color: #6937bb;
+  border-color: #6937bb;
+}
+.account-removal .disable {
+  background-color: transparent;
+  color: #f04747;
+  padding: 3px;
+  border: 2px solid #f04747;
+  cursor: pointer;
+  border-radius: 5px;
+  margin-left: 20px;
+}
+
+.account-removal .delete {
+  background-color: #f04747;
+}
+body {
+  background: #36393f;
+}
+
+.checkbox {
+  zoom: 1.5;
+  position: relative;
+  margin: 10px 0 10px auto;
+  width: 30px;
+  height: 18px;
+  border-radius: 60px;
+  cursor: pointer;
+  background: #72767d;
+  transition: background 0.3s linear;
+
+  .knob {
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    top: 2px;
+    left: 2px;
+    background: #FFF;
+    border-radius: 30px;
+
+    .line1,
+    .line2 {
+      position: absolute;
+      top: 6px;
+      left: 2px;
+      width: 10px;
+      height: 2px;
+      background: #72767d;
+      transform-origin: center;
+    }
+
+    .line1 {
+      transform: rotateZ(45deg);
+    }
+
+    .line2 {
+      transform: rotateZ(-45deg);
+    }
+  }
+
+  &.checked {
+    background: #43b581;
+
+    .knob {
+      animation: knob 0.3s ease-out forwards;
+
+      .line1 {
+        animation: line1 0.3s ease-out forwards;
+      }
+      .line2 {
+        animation: line2 0.3s ease-out forwards;
+      }
+    }
+  }
+
+  &.unchecked {
+    background: #72767d;
+
+    .knob {
+      animation: knob 0.3s ease-out reverse forwards;
+    }
+
+    .line1 {
+      animation: line1 0.3s ease-out reverse forwards;
+    }
+
+    .line2 {
+      animation: line2 0.3s ease-out reverse forwards;
+    }
+  }
+}
+
+@keyframes knob {
+  0% { width: 14px; height: 14px; top: 2px; left: 2px; }
+  33% { width: 18px; height: 14px; top: 2px; left: 2px; }
+  66% { width: 18px; height: 14px; top: 2px; left: 9px; }
+  100% { width: 14px; height: 14px; top: 2px; left: 14px; }
+}
+
+@keyframes line1 {
+  0% { top: 6px; left: 2px; width: 10px; height: 2px; background: #72767d; transform: rotateZ(45deg); }
+  100% { top: 8px; left: 2px; width: 6px; height: 2px; background: #43b581; transform: rotateZ(45deg); }
+}
+
+@keyframes line2 {
+  0% { top: 6px; left: 2px; width: 10px; height: 2px; background: #72767d; transform: rotateZ(-45deg); }
+  100% { top: 6px; left: 4px; width: 8px; height: 2px; background: #43b581; transform: rotateZ(-45deg); }
+}
+.option-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 10px 0;
+}
+
+.option-content span {
+  flex: 1;
+  margin-right: 10px;
+}
+
+.checkbox {
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+.separator {
+  width: 100%;
+  height: 1px;
+  background-color: #72767d;
+  opacity: 0.5;
+  margin: 5px 0;
+}

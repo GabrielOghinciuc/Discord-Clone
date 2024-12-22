@@ -1,0 +1,14 @@
+<div class="nowPlayingColumn" style="padding-top: 50px;">
+  <h4 style="font-size: 20px; margin-top: 50px;">Active Now</h4>
+  <aside class="container" aria-labelledby="activeFriends">
+    <div class="scroller">
+      <div *ngIf="activeFriends.length === 0" class="emptyCard" style="font-size: 15px;">
+        <h2 style="font-size: 20px;" class="emptyHeader">It's quiet for now...</h2>
+        <div class="emptyText">When a friend starts an activity—like playing a game or hanging out on voice—we’ll show it here!</div>
+      </div>
+      <ul *ngIf="activeFriends.length > 0">
+        <li *ngFor="let friend of activeFriends">{{ friend }}</li>
+      </ul>
+    </div>
+  </aside>
+</div>

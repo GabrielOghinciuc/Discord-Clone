@@ -1,0 +1,37 @@
+<p class="text-muted">{{ title }} - {{ users.length }}</p>
+<div class="people-list">
+  <ng-container *ngIf="!isEmpty(users); else noUsers">
+    <div *ngFor="let user of users" class="mb-3">
+      <div class="border-top border-dark" style="width: 100%; "></div>      <div class="section-container flex-grow-1"></div>
+      <div class="d-flex align-items-center justify-content-between">
+        <div class="d-flex align-items-center">
+          <img [src]="user.avatarUrl" alt="{{ user.username }}" class="rounded-circle me-2" style="margin-right: 5px; width: 40px; height: 40px;">
+          <div class="ms-2">
+            <div class="fw-bold text-white">{{ user.username }}<span class="text-muted">#{{ user.discriminator }}</span></div>
+            <div class="text-secondary">{{ user.status }}</div>
+          </div>
+        </div>
+        <div class="d-flex">
+          <button aria-label="Message" class="custom-svg-btn">
+            <svg width="20" height="20" fill="none" viewBox="0 0 24 24">
+              <path fill="currentColor" d="M12 22a10 10 0 1 0-8.45-4.64c.13.19.11.44-.04.61l-2.06 2.37A1 1 0 0 0 2.2 22H12Z" />
+            </svg>
+          </button>
+          <button aria-label="More" class="custom-svg-btn">
+            <svg width="20" height="20" fill="none" viewBox="0 0 24 24">
+              <path fill="currentColor" d="M10 4a2 2 0 1 0 4 0 2 2 0 0 0-4 0Zm2 10a2 2 0 1 1 0-4 2 2 0 0 1 0 4Zm0 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4Z" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </ng-container>
+  <ng-template #noUsers>
+    <div class="no-users">
+      <svg width="48" height="48" fill="none" viewBox="0 0 24 24">
+        <path fill="currentColor" d="M12 2a10 10 0 0 0-10 10h1a9 9 0 1 1 9 9h1a10 10 0 0 0 0-20Zm1 15h-2v-2h2v2Zm0-4h-2V7h2v6Z" />
+      </svg>
+      <p>No one's around to play with Wumpus.</p>
+    </div>
+  </ng-template>
+</div>

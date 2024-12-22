@@ -1,0 +1,83 @@
+<div class="discord-layout d-flex" style="height: 100vh;">
+  <app-channel-list [users]="allFriends"></app-channel-list>
+  <div class="content d-flex flex-grow-1">
+    <div class="user-content d-flex flex-grow-1">
+      <app-user-sidebar (sectionSelected)="onSectionChange($event)"></app-user-sidebar>
+      <div class="border-top border-dark" style="width: 100%;"></div>
+      <div class="section-container flex-grow-1">
+        <div class="online" *ngIf="selectedSection === 'online'">
+          <ng-container *ngIf="isEmpty(onlineFriends); else onlineList">
+            <div class="empty-state">
+              <img src="online.svg" alt="No online friends" />
+              <p>No one's around to play with Wumpus.</p>
+            </div>
+          </ng-container>
+          <ng-template #onlineList>
+            <app-online-user [users]="onlineFriends"></app-online-user>
+          </ng-template>
+        </div>
+
+        <div class="online" *ngIf="selectedSection === 'all'">
+          <ng-container *ngIf="isEmpty(allFriends); else allList">
+            <div class="empty-state">
+              <img src="all.svg" alt="No friends" />
+              <p>Wumpus is waiting on friends. You don't have to though!</p>
+            </div>
+          </ng-container>
+          <ng-template #allList>
+            <app-user-list [users]="allFriends"></app-user-list>
+          </ng-template>
+        </div>
+
+        <div *ngIf="selectedSection === 'pending'">
+          <ng-container *ngIf="isEmpty(pendingRequests); else pendingList">
+            <div class="empty-state">
+              <img src="pending.svg" alt="No pending requests" />
+              <p>There are no pending friend requests. Here's Wumpus for now.</p>
+            </div>
+          </ng-container>
+          <ng-template #pendingList>
+            <ul class="friend-list">
+              <li *ngFor="let request of pendingRequests">{{ request }}</li>
+            </ul>
+          </ng-template>
+        </div>
+
+        <div *ngIf="selectedSection === 'sugg'">
+          <ng-container *ngIf="isEmpty(suggestions); else suggestionList">
+            <div class="empty-state">
+              <img src="pending.svg" alt="No suggestions" />
+              <p>There are no pending friend suggestions. Here's Wumpus for now.</p>
+            </div>
+          </ng-container>
+          <ng-template #suggestionList>
+            <ul class="friend-list">
+              <li *ngFor="let suggestion of suggestions">{{ suggestion }}</li>
+            </ul>
+          </ng-template>
+        </div>
+
+        <div *ngIf="selectedSection === 'blocked'">
+          <ng-container *ngIf="isEmpty(blockedUsers); else blockedList">
+            <div class="empty-state">
+              <img src="blocked.svg" alt="No blocked users" />
+              <p>You can't block the Wumpus.</p>
+            </div>
+          </ng-container>
+          <ng-template #blockedList>
+            <ul class="friend-list">
+              <li *ngFor="let user of blockedUsers">{{ user }}</li>
+            </ul>
+          </ng-template>
+        </div>
+
+        <div *ngIf="selectedSection === 'add-friend'">
+          <p>Add Friend Section</p>
+        </div>
+      </div>
+    </div>
+    <div class="status-message-container" style="z-index: 0;background-color: #2f3136 ; width: 350px;">
+      <app-status-message style="background-color: transparent;"></app-status-message>
+    </div>
+  </div>
+</div>

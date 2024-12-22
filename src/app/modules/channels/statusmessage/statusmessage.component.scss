@@ -1,0 +1,58 @@
+.discord-layout {
+  display: flex;
+  color: #fff;
+  height: 100vh;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.content {
+  display: flex;
+  flex-direction: row;
+  flex-grow: 1;
+  overflow: hidden;
+  width: 100%;
+}
+
+.user-content {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  max-width: calc(100% - 300px);
+  overflow: hidden;
+  width: 100%;
+}
+
+.section-container {
+  flex-grow: 1;
+  padding-right: 15px;
+  overflow: hidden;
+}
+
+.status-message-container {
+  width: 100%;
+  max-width: 280px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.scroller {
+  overflow-y: auto;
+  max-height: calc(100vh - 150px);
+  padding-right: 8px;
+}
+
+.nowPlayingColumn {
+  background-color: transparent;
+}
+
+.emptyCard {
+  text-align: center;
+  margin-top: 50px;
+}
+
+* {
+  color: white;
+}

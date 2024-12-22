@@ -1,0 +1,46 @@
+<div class="container" *ngIf="loggedUser">
+  <div class="top">
+    <div class="edit">
+      <app-icon (click)="closeLoggedUserSettingsModal()" name="pen"></app-icon>
+    </div>
+    <div class="sign">
+      <div class="icon-container">
+        <app-icon name="text-channel" class="color-black very-small known-initial-icon"></app-icon>
+      </div>
+    </div>
+  </div>
+  <app-avatar status="online" [bgColor]="loggedUser.bgColor" icon="logo" dimension="xxl" [hideTooltip]="true"></app-avatar>
+  <div class="logged-user-data-container">
+    <div class="logged-user-data">
+      <div class="full-name">
+        <strong>{{ loggedUser.fullName }}</strong>
+        <strong *ngIf="!loggedUser.fullName">{{ loggedUser.username }}</strong>
+        <span>{{ loggedUser.username }}</span>
+      </div>
+      <div class="member-since">
+        <strong>DISCORD MEMBER SINCE :</strong>
+        <span>{{ loggedUser.joinedOn | date }}</span>
+      </div>
+      <div class="status">
+        <div class="normal-status">
+          <div class="status-type">
+            <div class="status-dot"></div>
+            <span>Online</span>
+          </div>
+          <app-icon name="arrow-right" class="small color-dark-grey"></app-icon>
+        </div>
+        <div class="custom-status">
+          <app-icon class="color-dark-grey" name="smiley-face"></app-icon>
+          <span>Set Custom Status</span>
+        </div>
+      </div>
+      <div class="switch-account-container">
+        <div class="switch-account">
+          <app-icon class="color-dark-grey" name="reverse-arrow"></app-icon>
+          <span>Switch accounts</span>
+        </div>
+        <app-icon class="large color-dark-grey" name="arrow-right"></app-icon>
+      </div>
+    </div>
+  </div>
+</div>

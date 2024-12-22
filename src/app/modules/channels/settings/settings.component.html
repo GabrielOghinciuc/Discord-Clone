@@ -1,0 +1,105 @@
+<div class="settings-container">
+  <div class="list">
+    <app-settings-list (optionSelected)="displayOption($event)"></app-settings-list>
+  </div>
+ <div class="profile-section">
+  <div class="my-account-section" *ngIf="selectedOption === 'My Account'">
+    <div class="my-account-section">
+      <h5 style="margin: 10px; margin-bottom: 50px;">My Account</h5>
+      <div class="profile-banner"></div>
+      <div class="profile-container">
+        <div class="profile-header">
+          <img class="profile-picture" src="avatar.png" alt="Profile Image" />
+          <div class="user-info">
+            <h3>User</h3>
+            <div class="user-id">
+              <span>user1235</span>
+            </div>
+          </div>
+          <button class="edit-profile-btn">Edit User Profile</button>
+        </div>
+        <div class="user-details">
+          <div class="detail">
+            <div class="detail-info">
+              <span class="label">DISPLAY NAME</span>
+              <span>User</span>
+            </div>
+            <button>Edit</button>
+          </div>
+          <div class="detail">
+            <div class="detail-info">
+              <span class="label">USERNAME</span>
+              <span>user12345</span>
+            </div>
+            <button>Edit</button>
+          </div>
+              <div class="detail">
+                <div class="detail-info">
+                  <span class="label">EMAIL</span>
+                  <span>{{ emailHidden ? censorEmail(email) : email }}</span>
+                  <a href="#" (click)="toggleEmailVisibility($event)"> {{ emailHidden ? 'Reveal' : 'Hide' }} </a>
+                </div>
+                <button>Edit</button>
+              </div>
+              <div class="detail">
+                <div class="detail-info">
+                  <span class="label">PHONE NUMBER</span>
+                  <span>{{ phoneHidden ? censorPhoneNumber(phoneNumber) : phoneNumber }}</span>
+                  <a href="#" (click)="togglePhoneVisibility($event)"> {{ phoneHidden ? 'Reveal' : 'Hide' }} </a>
+                  <a href="#" style="color: gray">Remove</a>
+                </div>
+                <button>Edit</button>
+              </div>
+            </div>
+      </div>
+    </div>
+
+    <div class="auth-section">
+      <section class="password-auth-section">
+        <h4 style="margin-bottom: 30px;">Password and Authentication</h4>
+        <button>Change Password</button>
+
+        <div class="auth-app">
+          <span>AUTHENTICATOR APP</span>
+          <p>Protect your Discord account with an extra layer of security. Once configured, you'll be required
+            to enter your password and complete one additional step in order to sign in.</p>
+          <button>Enable Authenticator App</button>
+        </div>
+        <img src="setari.svg" alt="Setări" class="svg-icon">
+
+        <div class="security-keys">
+          <span>SECURITY KEYS</span>
+          <p>Add an additional layer of protection to your account with a Security Key.</p>
+          <button>Register a Security Key</button>
+        </div>
+
+        <div class="account-removal">
+          <span>ACCOUNT REMOVAL</span>
+          <p>Disabling your account means you can recover it at any time after taking this action.</p>
+          <button class="delete">Disable Account</button>
+          <button class="disable">Delete Account</button>
+        </div>
+      </section>
+    </div>
+  </div>
+  <div class="my-account-section" *ngIf="selectedOption === 'Friend Request'">
+    <h5 style="margin-top: 30px;">Friend Request</h5>
+    <p>WHO CAN SEND YOU A FRIEND REQUEST</p>
+    <div class="option" *ngFor="let option of friendRequestOptions">
+      <div class="option-content">
+        <span>{{ option.label }}</span>
+        <div 
+          class="checkbox" 
+          [ngClass]="{ 'checked': option.isChecked, 'unchecked': !option.isChecked }"
+          (click)="toggleCheckbox(option)">
+          <div class="knob">
+            <div class="line1"></div>
+            <div class="line2"></div>
+          </div>
+        </div>
+      </div>
+      <div class="separator"></div>
+    </div>
+  </div>
+  </div>
+</div>

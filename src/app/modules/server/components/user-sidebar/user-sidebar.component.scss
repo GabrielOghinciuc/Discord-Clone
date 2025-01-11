@@ -1,0 +1,112 @@
+.user-sidebar {
+  background-color: #2f3136;
+  color: #fff;
+  padding: 2px 0;
+  z-index: 9999; 
+  overflow: hidden;
+  position: relative;
+}
+.status-message {
+  width: 300px;
+  background-color: #2f3136;
+  padding: 15px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  z-index: 999;
+  position: relative;}
+.user-sidebar ul {
+  display: flex;
+  flex-direction: row;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  flex-wrap: nowrap;
+  width: 100%;
+}
+
+.user-sidebar li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+
+}
+
+.user-sidebar li a {
+  flex-grow: 1;
+  
+}
+
+.user-sidebar svg {
+  margin-right: 10px;
+  width: 24px;
+  height: 24px;
+  fill: #fff;
+}
+.user-sidebar li:hover::before {
+  opacity: 1;
+}
+.user-sidebar li a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.user-sidebar li:hover {
+  background-color: #7575754d;
+  }
+
+.d-none.d-md-block {
+  display: none;
+}
+
+@media (max-width: 900px) {
+  .d-none.d-md-block {
+      display: none !important;
+  }
+}
+.add{margin:5px rgb(8, 189, 8);}
+
+.user-sidebar li svg {
+  margin-left: auto;
+}
+.user-sidebar li.add {
+  background-color: green;
+  color: white;
+}
+.user-sidebar li.add:hover {
+  background-color: green;
+  cursor: default;
+}
+.nav-item {
+  transition: background-color 0.3s ease;
+
+  &.active {
+    background-color: #7575754d;
+    color: white; 
+  }
+
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.1); 
+  }
+}
+@media (max-width: 1150px) {
+  .nav-item:nth-child(4),
+  .nav-item:nth-child(5), 
+  .nav-item.add { 
+      display: none !important;
+  }
+}
+.non-clickable {
+  pointer-events: none;
+}
+
+.non-clickable:hover {
+  background-color: transparent;
+  cursor: default;
+}
+.vertical-line {
+  width: 1px; 
+  background-color: gray; 
+  height: 28px; 
+  margin: 0 10px;
+  margin-top: 7px;
+}

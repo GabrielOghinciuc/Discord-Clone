@@ -1,0 +1,16 @@
+@import 'colors';
+
+body {
+  background-image: url('../../../assets/images/fundal.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  font-family: Cabin, sans-serif;
+}
+
+input {
+  outline: none;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}

@@ -1,0 +1,82 @@
+<div *ngIf="!channelTextTitle" class="container">
+  <app-user-sidebar (sectionSelected)="onSectionChange($event)"></app-user-sidebar>
+  <div class="border-top border-dark" style="width: 100%;"></div>
+  <div class="section-container flex-grow-1">
+    <div class="online" *ngIf="selectedSection === 'online'">
+      <div class="empty-state" style="display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; height: 100vh;">
+        <object data="assets/images/online.svg" type="image/svg+xml" style="width: 400px; height: 300px;"></object>
+        <p>No one's around to play with Wumpus.</p>
+      </div>      
+    </div>
+    <div *ngIf="selectedSection === 'pending'">
+      <div class="empty-state" style="display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; height: 100vh;">
+        <object data="assets/images/pending.svg" type="image/svg+xml" style="width: 400px; height: 300px;"></object>
+          <p>There are no pending friend requests. Here's Wumpus for now.</p>
+        </div>
+</div>
+<div *ngIf="selectedSection === 'sugg'">
+  <div class="empty-state" style="display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; height: 100vh;">
+    <object data="assets/images/pending.svg" type="image/svg+xml" style="width: 400px; height: 300px;"></object>
+      <p>There are no pending friend suggestions. Here's Wumpus for now.</p>
+    </div>
+</div>
+<div *ngIf="selectedSection === 'blocked'">
+  <div class="empty-state" style="display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; height: 100vh;">
+    <object data="assets/images/blocked.svg" type="image/svg+xml" style="width: 400px; height: 300px;"></object>
+      <p>You can't block the Wumpus.</p>
+    </div>
+    </div>
+</div>
+</div>
+<div *ngIf="channelTextTitle" class="container">
+  <div class="channel-title">
+    <app-icon class="medium color-grey" name="text-channel"></app-icon>
+    <span>{{ channelTextTitle }}</span>
+  </div>
+  <div class="chat" #allMessages>
+    <div class="welcome">
+      <app-icon name="text-channel" class="xxl"></app-icon>
+      <h1>Welcome to #{{ channelTextTitle }}</h1>
+      <span>This is the start of the #{{ channelTextTitle }} channel</span>
+      <div class="edit-channel" (click)="openEditChannelModal()">
+        <app-icon class="color-light-blue" name="pen"></app-icon>
+        <span>Edit channel</span>
+      </div>
+    </div>
+    <div class="messages">
+      <ng-container *ngFor="let message of messages; trackBy: trackByFn">
+        <div class="date-group" *ngIf="messages | checkDifferentDays: message">
+          <div class="line"></div>
+          <span>{{ message.sentOn | date: 'short' }}</span>
+          <div class="line"></div>
+        </div>
+        <div class="message" [class.has-stacked-messages]="messages | stackMessages: message">
+          <app-avatar
+            *ngIf="!(messages | stackMessages: message)"
+            [bgColor]="(users | whoSentTheMessage: message)?.bgColor"
+            icon="logo"
+            dimension="small"
+          ></app-avatar>
+          <div class="content">
+            <div class="name-and-data" *ngIf="!(messages | stackMessages: message)">
+              <span class="name">{{ (users | whoSentTheMessage: message)?.username }}</span>
+              <span class="data">{{ message.sentOn | date: 'short' }}</span>
+            </div>
+            <div class="stacked-message-container">
+              <span *ngIf="messages | stackMessages: message" class="stacked-message-hour">{{ message.sentOn | date: 'shortTime' }}</span>
+              <span class="message-content" [class.stacked-message]="messages | stackMessages: message">{{ message.content }}</span>
+            </div>
+          </div>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+  <div class="input-wrapper">
+    <input
+      type="text"
+      [(ngModel)]="message"
+      (keydown)="setTheValueOnEnter($event)"
+      placeholder="Trimite un mesaj pe #{{ channelTextTitle }}"
+    />
+  </div>
+</div>

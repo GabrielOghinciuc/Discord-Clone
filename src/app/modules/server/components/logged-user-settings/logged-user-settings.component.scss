@@ -1,0 +1,185 @@
+@import '../../../../shared/scss/colors';
+
+:host {
+  position: absolute;
+  bottom: 100px;
+  left: 100px;
+  z-index: 1;
+  border-radius: 15px;
+}
+
+.container {
+  position: relative;
+  width: 400px;
+  height: 500px;
+  color: $color-grey;
+  background: $discord-blue-color-050;
+  border-radius: 15px;
+
+  .top {
+    .edit,
+    .sign {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      width: 100%;
+      background: $discord-blue-color-050;
+
+      app-icon {
+        padding: 24px;
+        cursor: pointer;
+      }
+    }
+
+    .edit {
+      background: $discord-super-dark;
+      border-radius: 15px 15px 0 0;
+    }
+
+    .sign {
+      .icon-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 25px;
+        height: 25px;
+        padding: 2px;
+        margin-top: 20px;
+        margin-right: 20px;
+        background: $discord-super-dark;
+        border-radius: 5px;
+
+        app-icon {
+          padding: 2px;
+          background: $color-info;
+          border-radius: 50%;
+        }
+      }
+    }
+  }
+
+  app-avatar {
+    position: absolute;
+    top: 22px;
+    left: 22px;
+  }
+
+  .logged-user-data-container {
+    padding: 16px;
+    background: $discord-blue-color-050;
+    border-radius: 15px;
+
+    .logged-user-data {
+      display: flex;
+      flex-direction: column;
+      padding: 24px 12px;
+      background: $discord-super-dark;
+      border-radius: 15px;
+
+      .full-name,
+      .member-since {
+        display: flex;
+        flex-direction: column;
+        padding-bottom: 20px;
+        color: #fff;
+        border-bottom: 1px solid $discord-blue-color-light;
+      }
+
+      .full-name {
+        strong {
+          font-size: 16px;
+        }
+
+        span {
+          font-size: 14px;
+        }
+      }
+
+      .member-since {
+        gap: 5px;
+        margin-top: 20px;
+
+        span {
+          font-size: 14px;
+          color: $color-grey;
+        }
+
+        strong {
+          font-size: 14px;
+        }
+      }
+
+      .status {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        padding-bottom: 20px;
+        margin-top: 20px;
+        border-bottom: 1px solid $discord-blue-color-light;
+
+        .custom-status {
+          gap: 10px;
+          justify-content: flex-start;
+        }
+
+        .normal-status {
+          justify-content: space-between;
+        }
+
+        .normal-status,
+        .custom-status {
+          display: flex;
+          align-items: center;
+          padding: 2px 4px;
+
+          .status-dot {
+            width: 12px;
+            height: 12px;
+            background: #3ba55d;
+            border-radius: 50%;
+          }
+
+          &:hover {
+            cursor: pointer;
+            background: $discord-blue-color-030;
+            border-radius: 4px;
+
+            .status-dot {
+              background: $color-white;
+            }
+          }
+        }
+
+        .status-type {
+          display: flex;
+          gap: 14px;
+          align-items: center;
+          margin-left: 6px;
+        }
+      }
+
+      .switch-account-container {
+        display: flex;
+        justify-content: space-between;
+        padding: 2px 4px;
+        margin-top: 20px;
+
+        .switch-account {
+          display: flex;
+          gap: 10px;
+          align-items: center;
+
+          app-icon {
+            transform: rotate(90deg);
+          }
+        }
+
+        &:hover {
+          cursor: pointer;
+          background: $discord-blue-color-030;
+          border-radius: 4px;
+        }
+      }
+    }
+  }
+}

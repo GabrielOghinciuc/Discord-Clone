@@ -1,0 +1,158 @@
+@import 'colors';
+
+.ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+app-icon {
+  svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  /* SIZES */
+  &.very-small {
+    width: 12px;
+    height: 12px;
+  }
+
+  &.small {
+    svg {
+      width: 16px;
+      height: 16px;
+    }
+
+    gap: 12px;
+  }
+
+  &.medium {
+    svg {
+      width: 24px;
+      height: 24px;
+    }
+  }
+
+  &.big {
+    svg {
+      width: 32px;
+      height: 32px;
+    }
+
+    gap: 32px;
+  }
+
+  &.xl {
+    svg {
+      width: 64px;
+      height: 64px;
+    }
+
+    gap: 42px;
+  }
+
+  &.xxl {
+    svg {
+      width: 64px !important;
+      height: 64px !important;
+    }
+
+    gap: 48px;
+  }
+
+  /* COLORS */
+
+  &.color-warning {
+    svg {
+      path {
+        fill: $color-warning;
+      }
+    }
+  }
+
+  &.color-light-blue {
+    svg {
+      path {
+        fill: $color-light-blue !important;
+      }
+    }
+  }
+
+  &.color-green {
+    svg {
+      path {
+        border: none;
+        fill: $color-green !important;
+      }
+    }
+  }
+
+  &.color-error {
+    svg {
+      path {
+        fill: $color-error !important;
+      }
+    }
+  }
+
+  &.color-info {
+    svg {
+      path {
+        fill: $color-info;
+      }
+    }
+  }
+
+  &.color-white {
+    svg {
+      path {
+        fill: $color-white !important;
+      }
+    }
+  }
+
+  &.channel-color {
+    svg {
+      path {
+        fill: $color-grey-020 !important;
+      }
+    }
+  }
+
+  &.color-dark-grey {
+    svg {
+      path {
+        fill: $color-grey-020 !important;
+      }
+    }
+  }
+
+  &.color-black {
+    svg {
+      path {
+        fill: #000 !important;
+      }
+    }
+  }
+
+  &.color-grey {
+    svg {
+      path {
+        fill: $color-grey;
+      }
+    }
+
+    &:hover {
+      svg {
+        path {
+          fill: $color-white !important;
+        }
+      }
+    }
+  }
+}
+
+.visible {
+  visibility: visible !important;
+}

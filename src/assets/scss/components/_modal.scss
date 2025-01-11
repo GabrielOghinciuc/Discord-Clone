@@ -1,0 +1,266 @@
+@import 'colors';
+
+.modal-container {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  height: 100vh;
+  overflow-x: hidden;
+  background: rgb(0 0 0 / 30%);
+  transform: translate(-50%, -50%);
+
+  .modal-content {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 410px;
+    padding: 20px;
+    color: $color-grey-020;
+    background: $discord-blue-color-040;
+    border-radius: 20px;
+
+    strong {
+      font-size: 14px;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 10px;
+      justify-content: space-between;
+
+      .on-edit-mode {
+        display: flex;
+        gap: 8px;
+        align-items: center;
+      }
+
+      .delete-button {
+        cursor: pointer;
+        background: $color-error-010;
+
+        &:hover {
+          color: $color-white;
+          background: $color-error-010;
+        }
+      }
+
+      .edit-cancel-buttons {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+      }
+
+      button {
+        display: flex;
+        align-items: center;
+        padding: 12px;
+        color: #fff;
+        cursor: pointer;
+        background: transparent;
+        border: none;
+        border-radius: 5px;
+
+        &:hover {
+          color: $color-black;
+          background: $color-white;
+        }
+
+        &.save-button,
+        &.create-button {
+          background: $color-blue-010;
+
+          &:hover {
+            color: $color-white;
+            background: $color-blue-020;
+          }
+        }
+
+        &:disabled {
+          cursor: not-allowed;
+          opacity: 0.2;
+        }
+      }
+    }
+
+    .input {
+      display: flex;
+      align-items: center;
+      background: $discord-blue-color-050;
+      border-radius: 4px;
+
+      input {
+        width: 100%;
+        padding: 8px 0 8px 8px;
+        color: $color-white;
+        background: transparent;
+        border: none;
+        outline: none;
+
+        &::placeholder {
+          font-size: 14px;
+          color: grey;
+        }
+      }
+    }
+
+    .color-picker-wrapper {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+
+      strong {
+        font-size: 14px;
+      }
+
+      .role-description {
+        font-size: 12px;
+      }
+
+      .color-picker {
+        display: flex;
+        gap: 20px;
+        align-items: center;
+
+        .picked-color {
+          width: 40px;
+          height: 40px;
+        }
+
+        .color-table {
+          display: flex;
+          flex-direction: column;
+          gap: 8px;
+
+          .row {
+            display: flex;
+            gap: 8px;
+
+            .color-cell {
+              width: 16px;
+              height: 16px;
+              cursor: pointer;
+              border-radius: 4px;
+
+              app-icon {
+                visibility: hidden;
+              }
+
+              &.active {
+                app-icon {
+                  visibility: visible;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .channel-types {
+      color: $color-white;
+
+      .title {
+        font-size: 12px;
+        font-weight: bold;
+        color: $color-grey;
+      }
+
+      .types {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        margin-top: 24px;
+
+        .type {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          padding: 8px 16px;
+          border-radius: 5px;
+
+          .type-details-container {
+            display: flex;
+            gap: 16px;
+            align-items: center;
+
+            .details {
+              display: flex;
+              flex-direction: column;
+              gap: 8px;
+
+              span {
+                flex: 1;
+                font-size: 14px;
+                color: $color-grey;
+              }
+            }
+          }
+
+          input[type='radio'] {
+            width: 16px;
+            height: 16px;
+            visibility: hidden;
+          }
+
+          .radio {
+            width: 16px;
+            height: 16px;
+            cursor: pointer;
+            border: 1px solid $color-grey;
+            border-radius: 50%;
+          }
+
+          &.active {
+            background: rgb(250 250 250 / 20%) !important;
+
+            .radio {
+              position: relative;
+
+              &::before {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                width: 10px;
+                height: 10px;
+                content: '';
+                background: $color-grey;
+                border-radius: 50%;
+                transform: translate(-50%, -50%);
+              }
+            }
+          }
+
+          &:hover {
+            cursor: pointer;
+            background: rgb(250 250 250 / 10%);
+          }
+        }
+      }
+    }
+  }
+}
+
+label {
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+}
+
+.modal-container::-webkit-scrollbar {
+  width: 4px;
+}
+
+.modal-container::-webkit-scrollbar-thumb {
+  background-color: $color-black;
+  border-radius: 4px;
+}
+
+@media (max-height: 400px) {
+  .modal-content {
+    height: 100vh;
+  }
+}

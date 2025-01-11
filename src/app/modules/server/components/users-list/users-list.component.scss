@@ -1,0 +1,106 @@
+@import '../../../../shared/scss/colors';
+
+.scrolling-container {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  width: 254px;
+  height: calc(120vh - 32px);
+  padding: 16px;
+  overflow-x: hidden;
+  color: $color-white;
+  background: $discord-blue-color-010;
+
+  .users {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    .category {
+      display: flex;
+      gap: 4px;
+      align-items: center;
+      color: $color-grey-010;
+
+      &-name {
+        font-size: 14px;
+      }
+
+      .number-of-users {
+        font-size: 12px;
+      }
+    }
+
+    .user {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+
+      &-details {
+        display: flex;
+        flex-direction: column;
+        cursor: pointer;
+
+        .activity {
+          font-size: 10px;
+          color: $color-grey;
+        }
+      }
+
+      &.offline {
+        opacity: 0.6;
+      }
+    }
+
+    .roles {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .user-props {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+  }
+}
+
+.role-wrapper {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+
+  .color {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+  }
+}
+
+.checkbox {
+  width: 20px;
+  height: 20px;
+  background: $color-grey-020;
+  border-radius: 4px;
+
+  app-icon {
+    visibility: hidden;
+  }
+
+  &.active {
+    background: $color-blue-010;
+
+    app-icon {
+      visibility: visible;
+    }
+  }
+}
+
+.scrolling-container::-webkit-scrollbar {
+  width: 4px;
+}
+
+.scrolling-container::-webkit-scrollbar-thumb {
+  background-color: $color-black;
+  border-radius: 4px;
+}

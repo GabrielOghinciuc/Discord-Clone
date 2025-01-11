@@ -1,0 +1,310 @@
+@import '../../../../shared/scss/colors';
+
+$logged-user-container: 66px;
+
+:host {
+  background: $discord-blue-color-010;
+}
+.search {
+  background-color: rgb(29, 29, 29);
+  border-radius: 10px;
+  padding: 8px;
+  margin-bottom: 15px;
+  margin-left: 10px;
+  color: #fff;
+  border: none;
+  width: 220px;
+}
+ul {
+  list-style-type: none;
+  padding: 0;
+  flex-grow: 1;
+
+  li {
+    padding: 10px;
+    cursor: pointer;
+
+    &:hover {
+      background-color: #393c43;
+    }
+
+    &.active {
+      background-color: #393c43;
+      font-weight: bold;
+
+      &:hover {
+        background-color: #202225;
+      }
+    }
+  }
+}
+.add-message {
+  font-size: 15px;
+  cursor: pointer;
+  color: #fff;
+
+  &:hover {
+    color: #4caf50;
+  }
+}
+.direct-message-header {
+  display: flex;
+  justify-content: space-between; 
+  align-items: center;
+  color: #fff;
+  font-size: 15px;
+}
+.scrolling-container {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  width: 240px;
+  height: calc(100vh - #{$logged-user-container});
+  overflow-x: hidden;
+
+  &::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: $color-grey;
+    border-radius: 4px;
+  }
+}
+
+.server-without-logged-user {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.server {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  color: $color-white;
+
+  app-icon {
+    visibility: hidden;
+  }
+
+  &-name,
+  &-category {
+    padding: 12px;
+  }
+
+  &-name {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    letter-spacing: -0.735px;
+    box-shadow: 0 1px 0 0 $discord-blue-color-020;
+
+    &--text {
+      display: block;
+      font-size: 18px;
+    }
+
+    &:hover {
+      font-weight: bold;
+      background: $discord-blue-color-light;
+
+      app-icon {
+        cursor: pointer;
+        visibility: visible;
+      }
+    }
+  }
+
+  &-category {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    justify-content: space-between;
+    color: $color-grey-020;
+
+    &--text {
+      display: block;
+      font-size: 14px;
+    }
+
+    &:hover {
+      font-weight: bold;
+      color: $color-white;
+
+      app-icon {
+        cursor: pointer;
+        visibility: visible;
+      }
+    }
+  }
+
+  &-channel {
+    display: flex;
+    padding: 0 8px;
+    padding-left: 0;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 116%;
+    color: $color-grey-020;
+    cursor: pointer;
+
+    span {
+      display: block;
+      flex: 1;
+    }
+
+    .channel-container {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      border-radius: 4px;
+
+      &.active {
+        position: relative;
+        font-weight: 600;
+        color: $color-white;
+        background: rgb(255 255 255 / 10%);
+
+        &::before {
+          height: 10px;
+        }
+      }
+
+      &::before {
+        position: absolute;
+        top: 50%;
+        width: 5px;
+        height: 0;
+        content: '';
+        background: $color-white;
+        border: none;
+        border-radius: 0 8px 8px 0;
+        transition: height 0.3s ease-in-out;
+        transform: translateY(-50%);
+      }
+
+      .joined-user {
+        display: flex;
+        gap: 6px;
+        align-items: center;
+        padding: 4px 8px;
+        margin-left: 28px;
+
+        &:hover {
+          background: rgb(255 255 255 / 10%);
+          border-radius: 4px;
+        }
+      }
+
+      .channel-details {
+        display: flex;
+        gap: 6px;
+        align-items: center;
+        justify-content: space-between;
+        padding: 4px 8px;
+
+        app-icon {
+          visibility: visible;
+        }
+
+        .edit {
+          app-icon {
+            visibility: hidden;
+          }
+        }
+
+        .channel {
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+        }
+
+        .text-channel,
+        .audio-channel {
+          display: flex;
+          gap: 4px;
+          align-items: center;
+          width: 100%;
+        }
+
+        .text-channel {
+          display: flex;
+          padding-left: 8px;
+          overflow: hidden;
+        }
+
+        .audio-channel {
+          &.active {
+            font-weight: 600;
+            color: $color-white;
+          }
+        }
+
+        &:hover {
+          background: $discord-blue-color-light;
+
+          .edit {
+            app-icon {
+              cursor: pointer;
+              visibility: visible;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.logged-user {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px;
+  color: $color-white;
+  background: $discord-blue-color-060;
+
+  .logged-user-name {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    padding: 8px;
+    border-radius: 4px;
+
+    .names {
+      display: flex;
+      flex-direction: column;
+      max-width: 100px;
+
+      strong {
+        font-size: 14px;
+      }
+
+      span {
+        font-size: 12px;
+        color: $color-grey;
+      }
+    }
+
+    &:hover {
+      cursor: pointer;
+      background: rgb(255 255 255 / 20%);
+    }
+  }
+
+  .disconnect {
+    padding: 8px;
+    cursor: pointer;
+    border-radius: 4px;
+
+    &:hover {
+      background: rgb(255 255 255 / 20%);
+    }
+  }
+}

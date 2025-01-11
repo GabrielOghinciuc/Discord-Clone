@@ -1,0 +1,132 @@
+@import 'colors';
+
+.drop-down-option {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  padding: 12px;
+  color: $color-white;
+
+  &:hover {
+    cursor: pointer;
+    background: $color-blue-030;
+  }
+
+  &.birth-date-option {
+    width: 94px;
+    color: $color-grey-020;
+
+    &:hover {
+      color: $color-grey;
+      background: rgb(255 255 255 / 10%);
+    }
+  }
+
+  &.exit {
+    color: $color-error;
+
+    &:hover {
+      color: $color-white;
+      background: $color-error;
+
+      app-icon {
+        svg {
+          path {
+            fill: $color-white !important;
+          }
+        }
+      }
+    }
+  }
+
+  &.role {
+    justify-content: space-between;
+  }
+}
+
+.cdk-overlay-container,
+.cdk-global-overlay-wrapper {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.cdk-overlay-container {
+  position: fixed;
+  z-index: 1000;
+}
+
+.cdk-overlay-container:empty {
+  display: none;
+}
+
+.cdk-global-overlay-wrapper {
+  position: absolute;
+  z-index: 1000;
+  display: flex;
+}
+
+.cdk-overlay-pane {
+  position: absolute;
+  z-index: 1000;
+  box-sizing: border-box;
+  max-width: 100%;
+  max-height: 100%;
+  pointer-events: auto;
+}
+
+.cdk-overlay-backdrop {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1000;
+  pointer-events: auto;
+  opacity: 0;
+  transition: opacity 400ms cubic-bezier(0.25, 0.8, 0.25, 1);
+  -webkit-tap-highlight-color: transparent;
+}
+
+.cdk-overlay-backdrop.cdk-overlay-backdrop-showing {
+  opacity: 1;
+}
+
+.cdk-high-contrast-active .cdk-overlay-backdrop.cdk-overlay-backdrop-showing {
+  opacity: 0.6;
+}
+
+.cdk-overlay-dark-backdrop {
+  background: rgb(0 0 0 / 32%);
+}
+
+.cdk-overlay-transparent-backdrop,
+.cdk-overlay-transparent-backdrop.cdk-overlay-backdrop-showing {
+  opacity: 0;
+}
+
+.cdk-overlay-connected-position-bounding-box {
+  position: absolute;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  min-width: 1px;
+  min-height: 1px;
+}
+
+.cdk-global-scrollblock {
+  position: fixed;
+  width: 100%;
+  overflow-y: scroll;
+}
+
+.cdk-overlay-pane::-webkit-scrollbar {
+  width: 4px;
+}
+
+.cdk-overlay-pane::-webkit-scrollbar-thumb {
+  background-color: $color-black;
+  border-radius: 4px;
+}

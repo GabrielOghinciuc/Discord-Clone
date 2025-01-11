@@ -1,0 +1,46 @@
+<div class="login-container">
+  <img class="logo" src="assets/images/dlogo.png" alt="Logo">
+  <div class="login-box">
+      <div class="row">
+          <div class="col-md-8">
+              <h4>Welcome back!</h4>
+          <p>We're excited to see you again!</p>
+              <form class="login-form">
+                  <div class="mb-3">
+                    <div class="username" [class.error-visible]="loginErrorUsername || (loginError && !(loginErrorNameAndPassword || loginErrorPassword || loginErrorUsername))">
+    <div class="error-and-label-wrapper">
+      <span class="form-label label">USERNAME OR EMAIL <strong class="mandatory-sign">*</strong></span>
+      <div [class.visible]="loginError && !(loginErrorNameAndPassword || loginErrorPassword || loginErrorUsername)" class="error">
+        The username or password is incorrect !
+      </div>
+    </div>
+    <input class="form-control" name="username" [(ngModel)]="username" (input)="clearError()" type="text" />
+  </div> 
+</div>
+    <div class="mb-3">
+  <div class="password" [class.error-visible]="loginErrorPassword || (loginError && !(loginErrorNameAndPassword || loginErrorPassword || loginErrorUsername))">
+    <div class="error-and-label-wrapper">
+      <span class="form-label label">PASSWORD <strong class="mandatory-sign">*</strong></span>
+      <div [class.visible]="loginError && !(loginErrorNameAndPassword || loginErrorPassword || loginErrorUsername)" class="error">
+        The username or password is incorrect !
+      </div>
+    </div>
+    <input class="form-control" name="password" [(ngModel)]="password" (input)="clearError()" type="password" />
+  </div>
+         <a href="#" class="forgot-password">Forgot your password?</a>
+</div>
+<button (click)="login()" type="submit" class="btn btn-primary w-100">Log In</button>
+<p class="reg">Need an account? <a routerLink="/register">Register</a></p>
+ </form>
+          </div>
+          <div class="col-md-4 d-none d-md-block">
+              <div class="qr-code">
+                  <img src="assets/images/qr.png" alt="QR Code" class="qr-image">
+                  <h4>Log in with QR Code</h4>
+                  <p class="cd">Scan this with <span>Discord mobile app</span> to log in instantly</p>
+                  <a href="#">Or, sign in with passkey</a>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>

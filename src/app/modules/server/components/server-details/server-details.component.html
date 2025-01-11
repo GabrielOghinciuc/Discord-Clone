@@ -1,0 +1,127 @@
+<div class="scrolling-container server">
+  <div style="overflow: hidden;" *ngIf="!currentServer" class="no-server-selected">
+    <div class="channel-list">
+      <input type="text" class="search" placeholder="Find or start a conversation">  
+      <ul>
+          <li><svg class="linkButtonIcon_c91bad" aria-hidden="true"  width="24" height="24" fill="none" viewBox="0 0 24 24"><path fill="currentColor" d="M13 10a4 4 0 1 0 0-8 4 4 0 0 0 0 8Z"></path><path fill="currentColor" d="M3 5v-.75C3 3.56 3.56 3 4.25 3s1.24.56 1.33 1.25C6.12 8.65 9.46 12 13 12h1a8 8 0 0 1 8 8 2 2 0 0 1-2 2 .21.21 0 0 1-.2-.15 7.65 7.65 0 0 0-1.32-2.3c-.15-.2-.42-.06-.39.17l.25 2c.02.15-.1.28-.25.28H9a2 2 0 0 1-2-2v-2.22c0-1.57-.67-3.05-1.53-4.37A15.85 15.85 0 0 1 3 5Z" ></path></svg><a style="margin-left: 15px;">Friends</a></li>
+          <li><svg class="linkButtonIcon_c91bad" aria-hidden="true" width="24" height="24" fill="none" viewBox="0 0 24 24"><path fill="currentColor" d="M15 14a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z"></path><path fill="currentColor" fill-rule="evenodd" d="M7 4a1 1 0 0 0 0 2h3a1 1 0 1 1 0 2H5.5a1 1 0 0 0 0 2H8a1 1 0 1 1 0 2H6a1 1 0 1 0 0 2h1.25A8 8 0 1 0 15 4H7Zm8 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8Z" clip-rule="evenodd"></path><path fill="currentColor" d="M2.5 10a1 1 0 0 0 0-2H2a1 1 0 0 0 0 2h.5Z"></path></svg><a style="margin-left: 15px;">Nitro</a></li>
+          <li><svg class="linkButtonIcon_c91bad" aria-hidden="true" width="24" height="24" fill="none" viewBox="0 0 24 24"><path fill="currentColor" d="M1.16 5.02c-.1.28.04.58.29.74l10.27 6.85a.5.5 0 0 0 .56 0l10.27-6.85c.25-.16.38-.46.29-.74A3 3 0 0 0 20 3H4a3 3 0 0 0-2.84 2.02Z"></path><path fill="currentColor" d="M23 8.8a.5.5 0 0 0-.78-.41l-9.53 6.35c-.42.28-.96.28-1.38 0L1.78 8.39A.5.5 0 0 0 1 8.8V18a3 3 0 0 0 3 3h16a3 3 0 0 0 3-3V8.8Z" ></path></svg><a style="margin-left: 15px;">Message Request</a></li>
+          <li><svg class="linkButtonIcon_c91bad" aria-hidden="true" width="24" height="24" fill="none" viewBox="0 0 24 24"><path fill="currentColor" d="M2.63 4.19A3 3 0 0 1 5.53 2H7a1 1 0 0 1 1 1v3.98a3.07 3.07 0 0 1-.3 1.35A2.97 2.97 0 0 1 4.98 10c-2 0-3.44-1.9-2.9-3.83l.55-1.98ZM10 2a1 1 0 0 0-1 1v4a3 3 0 0 0 3 3 3 3 0 0 0 3-2.97V3a1 1 0 0 0-1-1h-4ZM17 2a1 1 0 0 0-1 1v3.98a3.65 3.65 0 0 0 0 .05A2.95 2.95 0 0 0 19.02 10c2 0 3.44-1.9 2.9-3.83l-.55-1.98A3 3 0 0 0 18.47 2H17Z"></path><path fill="currentColor" d="M21 11.42V19a3 3 0 0 1-3 3h-2.75a.25.25 0 0 1-.25-.25V16a2 2 0 0 0-2-2h-2a2 2 0 0 0-2 2v5.75c0 .14-.11.25-.25.25H6a3 3 0 0 1-3-3v-7.58c0-.18.2-.3.37-.24a4.46 4.46 0 0 0 4.94-1.1c.1-.12.3-.12.4 0a4.49 4.49 0 0 0 6.58 0c.1-.12.3-.12.4 0a4.45 4.45 0 0 0 4.94 1.1c.17-.07.37.06.37.24Z"></path></svg><a style="margin-left: 15px;">Shop</a></li>
+      </ul>
+      <div class="direct-message-wrapper" style="margin-bottom: 600px;">
+      <div class="direct-message-header">
+        <span>Direct Messages</span>
+        <i class="add-message">+</i>
+        </div></div></div>
+  </div>
+  <div class="server-without-logged-user" *ngIf="currentServer as server">
+    <div class="server-name" *ngIf="server.title !== ''">
+      <strong class="server-name--text ellipsis" [tooltip]="server.title" tooltipPosition="right">{{ server.title }}</strong>
+      <div>
+        <app-icon
+          [dropdownTrigger]="dropDownServer"
+          (isOpen)="serverDropDownStateChanged($event)"
+          name="three-dots"
+          class="color-white"
+          [class.visible]="isDropServerDownOpen"
+        ></app-icon>
+        <app-drop-down #dropDownServer>
+          <div class="drop-down-option" (click)="openCategoryModal()">
+            <app-icon name="add-message"></app-icon>
+            <span>Create category</span>
+          </div>
+          <div class="drop-down-option" (click)="openRoleModal(server)">
+            <app-icon name="add-message"></app-icon>
+            <span>Create role</span>
+          </div>
+          <div class="drop-down-option" (click)="openEditServerModal(server)">
+            <app-icon name="pen"></app-icon>
+            <span>Edit server</span>
+          </div>
+          <div class="drop-down-option exit" (click)="leaveServer(server)">
+            <app-icon name="exit" class="color-error"></app-icon>
+            <span>Leave server</span>
+          </div>
+        </app-drop-down>
+      </div>
+    </div>
+    <ng-container *ngFor="let category of server.categories; trackBy: trackByFn">
+      <div class="server-category">
+        <strong class="server-category--text ellipsis" [tooltip]="category.title" tooltipPosition="right">{{ category.title }}</strong>
+        <div>
+          <app-icon
+            name="three-dots"
+            class="color-white"
+            [class.visible]="isDropCategoryDownOpen && category.id === currentCategoryId"
+            [dropdownTrigger]="dropDownCategory"
+            (isOpen)="categoryDropDownStateChanged($event, category)"
+          ></app-icon>
+          <app-drop-down #dropDownCategory>
+            <div class="drop-down-option" (click)="openCreateChannelModal(category)">
+              <app-icon name="add-message"></app-icon>
+              <span>Create channel</span>
+            </div>
+            <div class="drop-down-option" (click)="openEditCategoryModal(category)">
+              <app-icon name="pen"></app-icon>
+              <span>Edit category</span>
+            </div>
+          </app-drop-down>
+        </div>
+      </div>
+      <div
+        class="server-channel"
+        (click)="joinChannel(channel, category, server)"
+        *ngFor="let channel of category.channels; trackBy: trackByFn"
+      >
+        <div class="channel-container ellipsis" [class.active]="loggedUser?.textChannelId === channel.id">
+          <div class="channel-details ellipsis">
+            <div class="channel ellipsis" *ngIf="channel.type === ChannelTypeEnum.audio">
+              <div class="audio-channel ellipsis" [class.active]="loggedUser?.audioChannelId === channel.id">
+                <app-icon class="channel-color" name="audio-channel"></app-icon>
+                <span class="ellipsis">
+                  {{ channel.title }}
+                </span>
+              </div>
+            </div>
+            <div class="text-channel" *ngIf="channel.type === ChannelTypeEnum.text">
+              <app-icon class="channel-color" name="text-channel"></app-icon>
+              <span class="text-channel--text ellipsis" [tooltip]="channel.title" tooltipPosition="right">
+                {{ channel.title }}
+              </span>
+            </div>
+            <div class="edit">
+              <app-icon name="pen" (click)="openEditChannelModal(category, channel)"></app-icon>
+            </div>
+          </div>
+          <ng-container *ngIf="loggedUser">
+            <div class="joined-user" *ngIf="loggedUser.audioChannelId === channel.id">
+              <app-avatar [bgColor]="loggedUser.bgColor" icon="logo" dimension="very-small"></app-avatar>
+              <span>{{ loggedUser.username }}</span>
+            </div>
+          </ng-container>
+        </div>
+      </div>
+    </ng-container>
+  </div>
+</div>
+
+<div *ngIf="loggedUser" class="logged-user">
+  <div
+    class="logged-user-name"
+    (click)="openLoggedUserSettingsModal()"
+    [dropdownTrigger]="userLoggedDropDown"
+    [customPosition]="loggedUserDropdownPosition"
+  >
+    <app-avatar [bgColor]="loggedUser.bgColor" icon="logo" status="online" dimension="small"></app-avatar>
+    <div class="names">
+      <strong class="ellipsis">{{ loggedUser.username }}</strong>
+      <span class="ellipsis" *ngIf="!loggedUser.fullName">{{ loggedUser.username }}</span>
+      <span class="ellipsis">{{ loggedUser.fullName }}</span>
+    </div>
+  </div>
+  <app-icon *ngIf="loggedUser.audioChannelId !== ''" (click)="disconnectFromTheChannel()" name="phone-missed" class="disconnect"></app-icon>
+</div>
+
+<app-drop-down #userLoggedDropDown>
+  <app-logged-user-settings></app-logged-user-settings>
+</app-drop-down>

@@ -22,7 +22,7 @@ export const sidebarActions: { [key: string]: SidebarActionInterface } = {
   logout: {
     hoverClass: 'fillBackground',
     fillHoverClass: 'fill-red',
-    icon: 'exit',
+    icon: 'mono-logout',
     bgColor: '#36373c'
   }
 };
